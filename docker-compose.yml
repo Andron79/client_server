@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+
+  rabbitmq:
+
+    image: rabbitmq:management
+
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+    volumes:
+      - rabbitmq_data
+
+  server:
+
+    build: server/
+
+    command: python ./server.py
+
+    depends_on:
+      - rabbitmq
+
+
+  client:
+
+    build: client/
+
+    command: python ./client.py
+
+    network_mode: host
+
+    depends_on:
+      - server
