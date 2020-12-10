@@ -15,7 +15,7 @@
 
 Создание и запуск контейнеров:
 
- * docker-compose up
+ * docker-compose build
  * docker-compose up
 
 Здесь конфликтует
